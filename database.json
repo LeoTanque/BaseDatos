@@ -1,0 +1,279 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "name": "Leonardo",
+      "userName": "leonardo",
+      "password": "Leonardo.123",
+      "confirmPassword": "Leonardo.123"
+    },
+    {
+      "name": "leo",
+      "userName": "leo",
+      "password": "Leodanis.123",
+      "confirmPassword": "Leodanis.123",
+      "id": 2
+    },
+    {
+      "name": "lisbet",
+      "userName": "lisbet24",
+      "password": "Lisbet",
+      "confirmPassword": "Lisbet",
+      "id": 3
+    },
+    {
+      "name": "Leodanis",
+      "userName": "leodanis",
+      "password": "Leodanis*2024",
+      "confirmPassword": "Leodanis*2024",
+      "id": 4
+    },
+    {
+      "name": "Jose",
+      "userName": "josefo",
+      "password": "Jose.123",
+      "confirmPassword": "Jose.123",
+      "id": 5
+    }
+  ],
+  "database": [
+    {
+      "nombre": "Jose",
+      "apellidos": "Romero Cala",
+      "CI": "99122569874",
+      "edad": 24,
+      "plaza": {
+        "name": "Tecnico en Ciencias Informaticas",
+        "code": "TI"
+      },
+      "salario": 5500,
+      "sexo": "F",
+      "id": 1
+    },
+    {
+      "nombre": "Iven ",
+      "apellidos": "Morales Ojeda",
+      "CI": "60032698754",
+      "edad": 64,
+      "plaza": {
+        "name": "Especialista Principal de Recuros Humanos",
+        "code": "EPRH"
+      },
+      "salario": 8900,
+      "sexo": "M",
+      "id": 2
+    },
+    {
+      "nombre": "Leodanis",
+      "apellidos": "Miranda Gomez",
+      "CI": "95102944444",
+      "edad": 28,
+      "plaza": {
+        "name": "Especialista Principal de Recuros Humanos",
+        "code": "EPRH"
+      },
+      "salario": 10000,
+      "sexo": "M",
+      "id": 3
+    },
+    {
+      "nombre": "Jose ",
+      "apellidos": "Leyva martinez",
+      "CI": "72052698745",
+      "edad": 52,
+      "plaza": {
+        "name": "Tecnico en Ciencias Informaticas",
+        "code": "TI"
+      },
+      "salario": 6800,
+      "sexo": "M",
+      "id": 4
+    },
+    {
+      "nombre": "Yuma",
+      "apellidos": "Hernandez Ramos",
+      "CI": "90052045987",
+      "edad": 34,
+      "plaza": {
+        "name": "Especialista Principal de Recuros Humanos",
+        "code": "EPRH"
+      },
+      "salario": 7000,
+      "sexo": "F",
+      "id": 5
+    },
+    {
+      "nombre": "Indira",
+      "apellidos": "Ramirez Perez",
+      "CI": "00082345692",
+      "edad": 24,
+      "plaza": {
+        "name": "Especialista Principal de Recuros Humanos",
+        "code": "EPRH"
+      },
+      "salario": 7500,
+      "sexo": "F",
+      "id": 6
+    },
+    {
+      "nombre": "Yamila",
+      "apellidos": "Perez Carbonel",
+      "CI": "80120325698",
+      "edad": 43,
+      "plaza": {
+        "name": "Secretaria",
+        "code": "ST"
+      },
+      "salario": 6000,
+      "sexo": "F",
+      "id": 7
+    },
+    {
+      "nombre": "Ermis",
+      "apellidos": "Urrutia Manduley",
+      "CI": "60122569874",
+      "edad": 63,
+      "plaza": {
+        "name": "Administrador",
+        "code": "AD"
+      },
+      "salario": 5600,
+      "sexo": "M",
+      "id": "3ZOJe"
+    },
+    {
+      "nombre": "Wilber ",
+      "apellidos": "Laforte Peña",
+      "CI": "95052415698",
+      "edad": 29,
+      "plaza": {
+        "name": "Sereno",
+        "code": "SR"
+      },
+      "salario": 4500,
+      "sexo": "M",
+      "id": "obWA7"
+    },
+    {
+      "nombre": "fewfe",
+      "apellidos": "wefewfew",
+      "CI": "95010523659",
+      "edad": 29,
+      "plaza": {
+        "name": "Tecnico en Seguridad y Proteccion",
+        "code": "TSP"
+      },
+      "salario": 6500,
+      "sexo": "M",
+      "id": "ILRCW"
+    },
+    {
+      "nombre": "Junior ",
+      "apellidos": "Perez Batista",
+      "CI": "85042536987",
+      "edad": 39,
+      "plaza": {
+        "name": "Director Zona 1",
+        "code": "DZ1"
+      },
+      "salario": 10500,
+      "sexo": "M",
+      "id": 8
+    },
+    {
+      "nombre": "Leo",
+      "apellidos": "Perez Ramirez",
+      "CI": "05011236987",
+      "edad": 19,
+      "plaza": {
+        "name": "Tecnico en Ciencias Informaticas",
+        "code": "TI"
+      },
+      "salario": 5600,
+      "sexo": "F",
+      "id": 9
+    }
+  ],
+  "plazas": [
+    {
+      "name": "Director",
+      "code": "DI"
+    },
+    {
+      "name": "Secretaria",
+      "code": "ST"
+    },
+    {
+      "name": "Tecnico en Ciencias Informaticas",
+      "code": "TI"
+    },
+    {
+      "name": "Tecnico en Seguridad y Proteccion",
+      "code": "TSP"
+    },
+    {
+      "name": "Administrador",
+      "code": "AD"
+    },
+    {
+      "name": "Sereno",
+      "code": "SR"
+    },
+    {
+      "name": "Especialista C en Economía ",
+      "code": "EPE"
+    },
+    {
+      "name": "Jefe de Departamento Recursos Humanos",
+      "code": "JRH"
+    },
+    {
+      "name": "Jefe de Departamento de Economía",
+      "code": "JEC"
+    },
+    {
+      "name": "Especialista Principal de Recuros Humanos",
+      "code": "EPRH"
+    },
+    {
+      "name": "Director General",
+      "code": "DG"
+    },
+    {
+      "name": "Director UEB Mantenimiento",
+      "code": "DMT"
+    },
+    {
+      "name": "Director Zona 1",
+      "code": "DZ1"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    },
+    {
+      "name": "Afghanistan",
+      "code": "AF"
+    }
+  ]
+}

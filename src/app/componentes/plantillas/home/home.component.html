@@ -1,0 +1,365 @@
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+      <ng-template pTemplate="left">
+        <div class="flex justify-content-center align-items-center gap-2">
+          <i class="pi pi-user"></i>
+          <p class="mr-2">{{currentUser.name}}</p>
+        </div>
+
+          <p-button
+              severity="success"
+              label="Nuevo Empleado"
+              icon="pi pi-plus"
+              class="mr-2"
+              (onClick)="openNew()" />
+          <p-button
+              severity="danger"
+              label="Eliminar"
+              icon="pi pi-trash"
+              (onClick)="deleteSelectedEmpleados()"
+              [disabled]="!selectedEmpleados || !selectedEmpleados.length" />
+      </ng-template>
+
+      <ng-template pTemplate="right">
+          <!--p-fileUpload
+              mode="basic"
+              accept="image/*"
+              [maxFileSize]="1000000"
+              label="Import"
+              chooseLabel="Import"
+              class="mr-2 inline-block" /-->
+          <p-button
+              severity="help"
+              label="Export"
+              icon="pi pi-upload"
+              class="mr-2 inline-block"  />
+
+              <p-button
+              severity="danger"
+              label="LogOut"
+              icon="pi pi-sign-out"
+              (onClick)="logout()"
+              />
+
+      </ng-template>
+  </p-toolbar>
+
+  <p-table
+      #dt
+      [value]="empleados"
+      [rows]="10"
+      [paginator]="true"
+      [globalFilterFields]="['nombre', 'apellidos', 'edad', 'sexo']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      [(selection)]="selectedEmpleados"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+      [globalFilterFields]="['nombre', 'apellidos', 'edad', 'sexo', 'salario', 'CI', 'plaza' ]"
+  >
+      <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+              <h5 class="m-0">Empleados</h5>
+              <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input
+                      pInputText
+                      type="text"
+
+                      #filter (input)="onGlobalFilter(dt, $event)" placeholder="Search Keyword"
+                      placeholder="Search..." />
+              </span>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 4rem">
+                  <p-tableHeaderCheckbox />
+              </th>
+              <th pSortableColumn="nombre" >
+                  Nombre <p-sortIcon field="nombre" />
+              </th>
+
+              <th pSortableColumn="apellidos">
+                Apellidos <p-sortIcon field="apellidos" />
+              </th>
+              <th pSortableColumn="CI">
+                CI <p-sortIcon field="CI" />
+              </th>
+              <th pSortableColumn="edad">
+                Edad <p-sortIcon field="edad" />
+              </th>
+              <th pSortableColumn="sexo" style="min-width:10rem">
+                Sexo
+              </th>
+              <th pSortableColumn="plaza" style="min-width:10rem">
+                Plaza <p-sortIcon field="plaza" />
+              </th>
+              <th pSortableColumn="salario" style="min-width:10rem">
+                Salario <p-sortIcon field="salario" />
+              </th>
+              <th style="min-width:10rem">
+                  Accion
+              </th>
+              <!--th-- pSortableColumn="inventoryStatus" style="min-width:10rem">
+                  Status <p-sortIcon field="inventoryStatus" />
+              </!--th-->
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-empleado>
+          <tr>
+              <td>
+                  <p-tableCheckbox [value]="empleado" />
+              </td>
+              <td>
+                  {{ empleado.nombre }}
+              </td>
+
+              <td>
+              <!--img
+                  [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + empleado.image"
+                  [alt]="empleado.apellidos"
+                  width="50"
+                  class="shadow-4" /-->
+
+                  {{empleado.apellidos}}
+              </td>
+              <td>
+                {{ empleado.CI }}
+            </td>
+              <td>
+                  {{ empleado.edad }}
+              </td>
+              <td>
+                  {{ empleado.sexo }}
+              </td>
+              <td>
+                {{ empleado.plaza.name }}
+            </td>
+              <td>
+                {{ empleado.salario }}
+            </td>
+              <!--td>
+                  <p-rating
+                      [(ngModel)]="empleado.rating"
+                      [readonly]="true"
+                      [cancel]="false" />
+              </td-->
+              <!--td>
+                  <p-tag
+                      [value]="empleado.inventoryStatus"
+                       />
+              </!--td-->
+              <td>
+                  <p-button
+                      icon="pi pi-pencil"
+                      class="mr-2"
+                      [rounded]="true"
+                      [outlined]="true"
+                      severity="success"
+                      (onClick)="editEmpleado(empleado)" />
+                  <p-button
+                      icon="pi pi-trash"
+                      severity="danger"
+                      [rounded]="true"
+                      [outlined]="true"
+                      (onClick)="deleteEmpleado(empleado)" />
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+              In total there are {{ empleados ? empleados.length : 0 }} empleados.
+          </div>
+      </ng-template>
+  </p-table>
+
+  <p-dialog
+      [(visible)]="empleadoDialog"
+      [style]="{ width: '450px' }"
+      header="Nuevo Empleado"
+      [modal]="true"
+      styleClass="p-fluid">
+          <ng-template pTemplate="content">
+              <img
+                  [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + empleado.image"
+                  [alt]="empleado.image"
+                  class="block m-auto pb-3"
+                  *ngIf="empleado.image" />
+              <div class="field">
+                  <label for="name">Nombre</label>
+                  <input
+                      type="text"
+                      pInputText
+                      id="name"
+                      [(ngModel)]="empleado.nombre"
+                      required
+                      autofocus />
+                  <small class="p-error" *ngIf="submitted && !empleado.nombre">
+                      Name is required.
+                  </small>
+              </div>
+              <div class="field">
+                <label for="name">Apellidos</label>
+                <input
+                    type="text"
+                    pInputText
+                    id="apellidos"
+                    [(ngModel)]="empleado.apellidos"
+                    required
+                    autofocus />
+                <small class="p-error" *ngIf="submitted && !empleado.apellidos">
+                    Apellidos is required.
+                </small>
+            </div>
+
+            <div class="formgrid grid justify-content-center">
+              <div class="field col-6">
+                <label for="CI">Carnet Identidad</label>
+                <input
+                    type="text"
+                    pInputText
+                    id="CI"
+                    [(ngModel)]="empleado.CI"
+                    (ngModelChange)="calcularEdad()"
+                    required
+                    autofocus />
+                <small class="p-error" *ngIf="submitted && !empleado.CI">
+                    Apellidos is required.
+                </small>
+            </div>
+
+
+
+            <div class="field col-6">
+              <label for="CI">Edad</label>
+              <p-inputNumber
+
+                  id="edad"
+                  [(ngModel)]="empleado.edad"
+                  [readonly]="true"
+                  required
+                   />
+              <small class="p-error" *ngIf="submitted && !empleado.edad">
+                  EdadS is required.
+              </small>
+          </div>
+
+            </div>
+
+
+
+
+              <!--div-- class="field">
+                <label for="name">Plazas</label>
+                <input
+                    type="text"
+                    pInputText
+                    id="apellidos"
+                    [(ngModel)]="empleado.plaza"
+                    required
+                    autofocus />
+                <small class="p-error" *ngIf="submitted && !empleado.plaza">
+                    Plaza is required.
+                </small>
+            </!--div-->
+
+
+
+            <div class="field">
+              <label for="name">Plazas</label>
+
+                  <p-autoComplete
+                  [(ngModel)]="empleado.plaza"
+                  [dropdown]="true"
+                  [suggestions]="filteredPlazas"
+                  (completeMethod)="filtrarPlaza($event)"
+                  field="name"
+                  required
+                  appendTo="body"
+                   />
+              <small class="p-error" *ngIf="submitted && !empleado.plaza">
+                  Plaza is required.
+              </small>
+          </div>
+
+
+
+              <!--div-- class="field">
+                  <label class="mb-3">Sexo</label>
+                  <div class="formgrid grid">
+                      <div class="field-radiobutton col-6">
+                          <p-radioButton
+                              id="masculino"
+                              name="Masculino"
+                              value="M"
+                              [(ngModel)]="empleado.sexo" />
+                          <label for="category1">Hombre</label>
+                      </div>
+                      <div class="field-radiobutton col-6">
+                          <p-radioButton
+                              id="femenina"
+                              name="Femenina"
+                              value="F"
+                              [(ngModel)]="empleado.sexo" />
+                          <label for="category2">Mujer</label>
+                      </div>
+
+                  </div>
+              </!--div-->
+
+              <div class="formgrid grid justify-content-center">
+                  <div class="field col-4">
+                      <label for="price"></label>
+                      <p-inputNumber
+                          id="salario"
+                          [(ngModel)]="empleado.salario"
+                          placeholder="Salario"
+                          mode="currency"
+                          currency="USD"
+                          locale="en-US"
+                          required />
+                          <small class="p-error" *ngIf="submitted && !empleado.salario">
+                            Salario is required.
+                        </small>
+                  </div>
+
+                  <div class="field-radiobutton col-4">
+
+                    <p-radioButton
+                        id="masculino"
+                        name="Masculino"
+                        value="M"
+                        [(ngModel)]="empleado.sexo" />
+                    <label for="category1">Hombre</label>
+                </div>
+                <div class="field-radiobutton col-4">
+                    <p-radioButton
+                        id="femenina"
+                        name="Femenina"
+                        value="F"
+                        [(ngModel)]="empleado.sexo" />
+                    <label for="category2">Mujer</label>
+                </div>
+              </div>
+          </ng-template>
+
+          <ng-template pTemplate="footer">
+              <p-button
+                  label="Cancel"
+                  icon="pi pi-times"
+                  [text]="true"
+                  (onClick)="hideDialog()" />
+              <p-button
+                  label="Save"
+                  icon="pi pi-check"
+                  [text]="true"
+                  (onClick)="saveEmpleado()" />
+          </ng-template>
+  </p-dialog>
+
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>
