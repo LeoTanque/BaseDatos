@@ -1,0 +1,22 @@
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+      <ng-template pTemplate="left">
+        <div class="flex justify-content-center align-items-center gap-2">
+          <i class="pi pi-user"></i>
+          <p class="mr-2">{{currentUser.name}}</p>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="right">
+              <p-button
+              severity="danger"
+              label="LogOut"
+              icon="pi pi-sign-out"
+              (onClick)="logout()"
+              />
+
+      </ng-template>
+  </p-toolbar>
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>

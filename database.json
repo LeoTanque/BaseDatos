@@ -34,246 +34,187 @@
       "password": "Jose.123",
       "confirmPassword": "Jose.123",
       "id": 5
+    },
+    {
+      "name": "Dency",
+      "userName": "drlopez",
+      "password": "Dency*2024",
+      "confirmPassword": "Dency*2024",
+      "id": 6
+    },
+    {
+      "name": "Guillermo ",
+      "userName": "guilletigre",
+      "password": "Tigre.123",
+      "confirmPassword": "Tigre.123",
+      "id": 7
     }
   ],
   "database": [
     {
-      "nombre": "Jose",
-      "apellidos": "Romero Cala",
-      "CI": "99122569874",
-      "edad": 24,
-      "plaza": {
-        "name": "Tecnico en Ciencias Informaticas",
-        "code": "TI"
+      "reparto": {
+        "name": "Caribe",
+        "code": "C"
       },
-      "salario": 5500,
-      "sexo": "F",
+      "municipio": {
+        "name": "Moa",
+        "code": "NY"
+      },
+      "provincia": {
+        "name": "New York",
+        "code": "NY"
+      },
+      "tratamientoA": {
+        "name": "Desmovilizado FAR",
+        "code": "DF"
+      },
+      "nombre": "Jose Romero Cala",
+      "CI": "95010523659",
+      "edad": 29,
+      "nivelEsc": {
+        "name": "Preuniversitario",
+        "code": "Pre"
+      },
+      "sexo": "M",
+      "fechaI": "2024-09-08T04:00:00.000Z",
+      "fechaA": "2024-09-23T04:00:00.000Z",
+      "NoExpediente": "25987",
+      "aExperiencia": "1 years",
+      "telefono": "59875632",
+      "orgMasa": [
+        {
+          "name": "CTC",
+          "code": "CTC"
+        },
+        {
+          "name": "CDR",
+          "code": "CDR"
+        }
+      ],
+      "militancia": "N",
+      "direccion": "Calle Principal #5",
+      "procedencia": "OPJM",
+      "estadoA": "loco",
+      "fechaE": "2024-09-30T04:00:00.000Z",
       "id": 1
     },
     {
-      "nombre": "Iven ",
-      "apellidos": "Morales Ojeda",
-      "CI": "60032698754",
-      "edad": 64,
-      "plaza": {
-        "name": "Especialista Principal de Recuros Humanos",
-        "code": "EPRH"
+      "reparto": {
+        "name": "Joselillo",
+        "code": "J"
       },
-      "salario": 8900,
+      "municipio": {
+        "name": "Sagua",
+        "code": "RM"
+      },
+      "provincia": {
+        "name": "London",
+        "code": "LDN"
+      },
+      "tratamientoA": {
+        "name": "Reserva del Niquel",
+        "code": "RN"
+      },
+      "nombre": "Rafael Martinedz Rodriguez",
+      "CI": "68011026987",
+      "edad": 56,
+      "nivelEsc": {
+        "name": "TM",
+        "code": "TM"
+      },
       "sexo": "M",
+      "fechaI": "2024-09-02T04:00:00.000Z",
+      "fechaA": "2024-09-18T04:00:00.000Z",
+      "NoExpediente": "25987",
+      "aExperiencia": "1 years",
+      "telefono": "59874569",
+      "orgMasa": [
+        {
+          "name": "CTC",
+          "code": "CTC"
+        },
+        {
+          "name": "PCC",
+          "code": "PCC"
+        },
+        {
+          "name": "CDR",
+          "code": "CDR"
+        }
+      ],
+      "militancia": "S",
+      "direccion": "Calle Principal #10",
+      "procedencia": "gsgdsg",
+      "estadoA": "soltero",
+      "fechaE": "2024-09-27T04:00:00.000Z",
       "id": 2
-    },
-    {
-      "nombre": "Leodanis",
-      "apellidos": "Miranda Gomez",
-      "CI": "95102944444",
-      "edad": 28,
-      "plaza": {
-        "name": "Especialista Principal de Recuros Humanos",
-        "code": "EPRH"
-      },
-      "salario": 10000,
-      "sexo": "M",
-      "id": 3
-    },
-    {
-      "nombre": "Jose ",
-      "apellidos": "Leyva martinez",
-      "CI": "72052698745",
-      "edad": 52,
-      "plaza": {
-        "name": "Tecnico en Ciencias Informaticas",
-        "code": "TI"
-      },
-      "salario": 6800,
-      "sexo": "M",
-      "id": 4
-    },
-    {
-      "nombre": "Yuma",
-      "apellidos": "Hernandez Ramos",
-      "CI": "90052045987",
-      "edad": 34,
-      "plaza": {
-        "name": "Especialista Principal de Recuros Humanos",
-        "code": "EPRH"
-      },
-      "salario": 7000,
-      "sexo": "F",
-      "id": 5
-    },
-    {
-      "nombre": "Indira",
-      "apellidos": "Ramirez Perez",
-      "CI": "00082345692",
-      "edad": 24,
-      "plaza": {
-        "name": "Especialista Principal de Recuros Humanos",
-        "code": "EPRH"
-      },
-      "salario": 7500,
-      "sexo": "F",
-      "id": 6
-    },
-    {
-      "nombre": "Yamila",
-      "apellidos": "Perez Carbonel",
-      "CI": "80120325698",
-      "edad": 43,
-      "plaza": {
-        "name": "Secretaria",
-        "code": "ST"
-      },
-      "salario": 6000,
-      "sexo": "F",
-      "id": 7
-    },
-    {
-      "nombre": "Ermis",
-      "apellidos": "Urrutia Manduley",
-      "CI": "60122569874",
-      "edad": 63,
-      "plaza": {
-        "name": "Administrador",
-        "code": "AD"
-      },
-      "salario": 5600,
-      "sexo": "M",
-      "id": "3ZOJe"
-    },
-    {
-      "nombre": "Wilber ",
-      "apellidos": "Laforte Peña",
-      "CI": "95052415698",
-      "edad": 29,
-      "plaza": {
-        "name": "Sereno",
-        "code": "SR"
-      },
-      "salario": 4500,
-      "sexo": "M",
-      "id": "obWA7"
-    },
-    {
-      "nombre": "fewfe",
-      "apellidos": "wefewfew",
-      "CI": "95010523659",
-      "edad": 29,
-      "plaza": {
-        "name": "Tecnico en Seguridad y Proteccion",
-        "code": "TSP"
-      },
-      "salario": 6500,
-      "sexo": "M",
-      "id": "ILRCW"
-    },
-    {
-      "nombre": "Junior ",
-      "apellidos": "Perez Batista",
-      "CI": "85042536987",
-      "edad": 39,
-      "plaza": {
-        "name": "Director Zona 1",
-        "code": "DZ1"
-      },
-      "salario": 10500,
-      "sexo": "M",
-      "id": 8
-    },
-    {
-      "nombre": "Leo",
-      "apellidos": "Perez Ramirez",
-      "CI": "05011236987",
-      "edad": 19,
-      "plaza": {
-        "name": "Tecnico en Ciencias Informaticas",
-        "code": "TI"
-      },
-      "salario": 5600,
-      "sexo": "F",
-      "id": 9
     }
   ],
   "plazas": [
     {
       "name": "Director",
-      "code": "DI"
+      "code": "DI",
+      "salario": 5800
     },
     {
       "name": "Secretaria",
-      "code": "ST"
+      "code": "ST",
+      "salario": 5800
     },
     {
       "name": "Tecnico en Ciencias Informaticas",
-      "code": "TI"
+      "code": "TI",
+      "salario": 5800
     },
     {
       "name": "Tecnico en Seguridad y Proteccion",
-      "code": "TSP"
+      "code": "TSP",
+      "salario": 5800
     },
     {
       "name": "Administrador",
-      "code": "AD"
+      "code": "AD",
+      "salario": 5800
     },
     {
       "name": "Sereno",
-      "code": "SR"
+      "code": "SR",
+      "salario": 5800
     },
     {
       "name": "Especialista C en Economía ",
-      "code": "EPE"
+      "code": "EPE",
+      "salario": 5800
     },
     {
       "name": "Jefe de Departamento Recursos Humanos",
-      "code": "JRH"
+      "code": "JRH",
+      "salario": 5800
     },
     {
       "name": "Jefe de Departamento de Economía",
-      "code": "JEC"
+      "code": "JEC",
+      "salario": 5800
     },
     {
       "name": "Especialista Principal de Recuros Humanos",
-      "code": "EPRH"
+      "code": "EPRH",
+      "salario": 5800
     },
     {
       "name": "Director General",
-      "code": "DG"
+      "code": "DG",
+      "salario": 5800
     },
     {
       "name": "Director UEB Mantenimiento",
-      "code": "DMT"
+      "code": "DMT",
+      "salario": 5800
     },
     {
       "name": "Director Zona 1",
-      "code": "DZ1"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
-    },
-    {
-      "name": "Afghanistan",
-      "code": "AF"
+      "code": "DZ1",
+      "salario": 5800
     }
   ]
 }

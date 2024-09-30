@@ -7,5 +7,6 @@ export interface Empleado {
   sexo: string,
   salario: any,
   plaza:any,
+  orgMasa: string[];
   //selectedPlaza:any
 }

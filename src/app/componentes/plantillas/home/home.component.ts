@@ -21,11 +21,24 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { HeaderComponent } from "../header/header.component";
+import { TabViewModule } from 'primeng/tabview';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CalendarModule } from 'primeng/calendar';
+interface Organizacion {
+  name: string;
+  code: string;
+}
 
+interface NivelEscolar {
+  name: string;
+  code: string;
+}
 
-
-
-
+interface Direccion {
+  name: string;
+  code: string;
+}
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -34,9 +47,11 @@ interface AutoCompleteCompleteEvent {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TableModule, DialogModule, RippleModule, ButtonModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, InputTextareaModule, CommonModule, FileUploadModule,
-    DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule, AutoCompleteModule],
-  providers: [MessageService, ConfirmationService, EmpleadosService, ],
+  imports: [CommonModule, TableModule, DialogModule, RippleModule, ButtonModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, InputTextareaModule, FileUploadModule,
+    DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule, AutoCompleteModule,
+     HeaderComponent,TabViewModule, MultiSelectModule, CalendarModule ],
+
+    providers: [MessageService, ConfirmationService, EmpleadosService, ],
   templateUrl: './home.component.html',
   //styleUrl: './home.component.scss',
    styles: [
@@ -47,7 +62,7 @@ interface AutoCompleteCompleteEvent {
         }`
     ]
 })
-export class HomeComponent implements OnInit{
+export  class HomeComponent implements OnInit{
 
   empleadoDialog: boolean = false;
   empleados!:any[]
@@ -58,7 +73,7 @@ export class HomeComponent implements OnInit{
 
   currentUser: any;
   edadOriginal: number | null = null;
-
+  activeIndex: number = 0;
 
   //plazas: any[] | undefined;
 
@@ -68,12 +83,20 @@ export class HomeComponent implements OnInit{
 
   filteredPlazas!: any[]
 
+  orgMasas: Organizacion[] | undefined;
+  nivelEscolares: NivelEscolar[] = [];
+  selectedOrgM: Organizacion | undefined;
+  repartos: Direccion[] | undefined;
+  municipios:Direccion[] | undefined;
+  provincias:Direccion[] | undefined
+  tratamientosA:Direccion[] | undefined
+  //fechaI: Date | undefined;
 constructor(private empleadosService: EmpleadosService, private messageService: MessageService,
   private confirmationService: ConfirmationService, private authService: AuthenticationService, private router: Router){}
 
 
   ngOnInit(): void {
-    this.empleadosService.getEmpleados().subscribe({
+    /*this.empleadosService.getEmpleados().subscribe({
       next: (data) => {
         this.empleados = data;
         console.log('Empleados:', this.empleados);
@@ -81,7 +104,11 @@ constructor(private empleadosService: EmpleadosService, private messageService: 
       error: (err) => {
         console.error('Error al obtener empleados', err);
       }
-    });
+    });*/
+
+    this.cargarEmpleados()
+
+
 
     this.statuses = [
       { label: 'INSTOCK', value: 'instock' },
@@ -95,10 +122,79 @@ constructor(private empleadosService: EmpleadosService, private messageService: 
   this.cargarPlazas()
 
 
+  this.orgMasas = [
+    { name: 'CDR', code: 'CDR' },
+    { name: 'PCC', code: 'PCC' },
+    { name: 'CTC', code: 'CTC' },
+    { name: 'FMC', code: 'FMC' },
+    { name: 'BPD', code: 'BPD' },
+    { name: 'MIT', code: 'MIT' },
+    { name: 'ACRC', code: 'ACRC' }
+];
 
+this.nivelEscolares = [
+  { name: '9no', code: '9no' },
+  { name: 'OC', code: 'OC' },
+  { name: 'Preuniversitario', code: 'Pre' },
+  { name: 'Primario', code: 'PRI' },
+  { name: 'Secundario', code: 'SEC' },
+  { name: 'TM', code: 'TM' },
+  { name: 'TS', code: 'TS' },
+  { name: 'NIvel Superior', code: 'NS' },
+]
 
+this.repartos = [
+  { name: 'Caribe', code: 'C' },
+  { name: 'Joselillo', code: 'J' },
+  { name: 'Haiti Chuiquito', code: 'H' },
+  { name: 'Las coloradas', code: 'LC' },
+  { name: 'Los Mangos', code: 'LM' }
+];
+
+this.municipios = [
+  { name: 'Moa', code: 'NY' },
+  { name: 'Sagua', code: 'RM' },
+  { name: 'Cueto', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' }
+];
+
+this.provincias = [
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' }
+];
+
+this.tratamientosA = [
+  { name: 'Reserva del Niquel', code: 'RN' },
+  { name: 'Desmovilizado FAR', code: 'DF' },
+  { name: 'NO apto FAR', code: 'NAF' },
+
+]
 
   }
+
+cargarEmpleados(){
+  this.empleadosService.getEmpleados().subscribe({
+    next: (data) => {
+      this.empleados = data.map((empleado: any) => {
+        if (empleado.fechaI) {
+          // Convertir la fecha a un objeto Date para que p-calendar lo entienda
+          empleado.fechaI = new Date(empleado.fechaI);
+          empleado.fechaA = new Date(empleado.fechaA);
+          empleado.fechaE = new Date(empleado.fechaE)
+        }
+        return empleado;
+      });
+      console.log('Empleados:', this.empleados);
+    },
+    error: (err) => {
+      console.error('Error al obtener empleados', err);
+    }
+  });
+}
 
 
   cargarPlazas() {
@@ -241,9 +337,7 @@ calcularEdad(): void {
 }
 
 
-
-
-saveEmpleado() {
+saveEmpleado1() {
   this.submitted = true;
   if (this.empleado.id && this.edadOriginal !== null) {
     // Si la edad cambió y el CI no fue modificado, mostrar mensaje de advertencia
@@ -295,8 +389,16 @@ saveEmpleado() {
 }
 
 
-saveEmpleado1() {
+saveEmpleado() {
   this.submitted = true;
+
+  if (!this.empleado.nombre || !this.empleado.CI || !this.empleado.nivelEsc || !this.empleado.fechaI || !this.empleado.fechaA ||
+     !this.empleado.NoExpediente || !this.empleado.aExperiencia || !this.empleado.telefono || !this.empleado.direccion ||
+     !this.empleado.procedencia || !this.empleado.tratamientoA || !this.empleado.municipio || !this.empleado.provincia || !this.empleado.direccion
+    || !this.empleado.sexo) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Hay campos vacíos. Por favor, completa todos los campos requeridos.' });
+    return; // Salir si hay campos requeridos sin completar
+}
 
   // Verificar si está editando el empleado
   if (this.empleado.id && this.edadOriginal !== null) {
@@ -312,6 +414,86 @@ saveEmpleado1() {
     }
   }
 
+  if (this.empleado.nombre?.trim()) {
+    if (this.empleado.id) {
+      // Editar empleado
+      this.empleadosService.updateEmpleado(this.empleado.id, this.empleado).subscribe({
+        next: (data) => {
+          const index = this.findIndexById(this.empleado.id);
+          this.empleados[index] = data;
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Empleado editado', life: 3000 });
+
+          this.empleadoDialog = false;
+          this.empleado = {};
+        },
+        error: (err) => {
+          console.error('Error al editar empleado', err);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo editar el empleado', life: 3000 });
+        }
+      });
+    } else {
+      // Crear nuevo empleado
+      //this.empleado.id = this.createId();
+      this.empleadosService.addEmpleado(this.empleado).subscribe({
+        next: (data) => {
+          this.empleados.push(data);
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Empleado creado', life: 3000 });
+
+          this.empleadoDialog = false;
+          this.empleado = {};
+
+         console.log('Empleado', this.empleado);
+        },
+        error: (err) => {
+          console.error('Error al agregar empleado', err);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el empleado', life: 3000 });
+        }
+      });
+    }
+
+  }
+}
+
+
+saveEmpleado0() {
+  this.submitted = true;
+
+  // Validar que no haya campos vacíos
+  if (!this.empleado.nombre || !this.empleado.CI || !this.empleado.nivelEsc || !this.empleado.fechaI || !this.empleado.fechaA ||
+      !this.empleado.NoExpediente || !this.empleado.aExperiencia || !this.empleado.telefono || !this.empleado.direccion ||
+      !this.empleado.procedencia || !this.empleado.tratamientoA || !this.empleado.municipio || !this.empleado.provincia || !this.empleado.direccion
+      || !this.empleado.sexo) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Hay campos vacíos. Por favor, completa todos los campos requeridos.' });
+    return; // Salir si hay campos requeridos sin completar
+  }
+
+  // Formatear las fechas al formato dd/mm/yy
+  if (this.empleado.fechaI) {
+    this.empleado.fechaI = this.formatDate(this.empleado.fechaI);
+  }
+
+  if (this.empleado.fechaA) {
+    this.empleado.fechaA = this.formatDate(this.empleado.fechaA);
+  }
+
+  if (this.empleado.fechaE) {
+    this.empleado.fechaE = this.formatDate(this.empleado.fechaE);
+  }
+
+  // Verificar si está editando el empleado
+  if (this.empleado.id && this.edadOriginal !== null) {
+    if (this.empleado.edad !== this.edadOriginal && !this.empleado.CI?.trim()) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Advertencia',
+        detail: 'La edad depende del CI. Para cambiar la edad, debe ingresar un CI válido.',
+        life: 3000
+      });
+      return; // Detener el guardado hasta que el CI sea modificado
+    }
+  }
+
+  // Guardar o editar empleado
   if (this.empleado.nombre?.trim()) {
     if (this.empleado.id) {
       // Editar empleado
@@ -349,6 +531,7 @@ saveEmpleado1() {
 }
 
 
+
 findIndexById(id: string): number {
   return this.empleados.findIndex(empleado => empleado.id === id);
 }
@@ -367,8 +550,24 @@ onGlobalFilter(table: Table, event: Event) {
 }
 
 
+formatDate1(date: Date): string {
+  const day = ('0' + date.getDate()).slice(-2); // Añadir 0 si el día es menor a 10
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // Añadir 0 si el mes es menor a 10
+  const year = date.getFullYear().toString().slice(-2); // Obtener los últimos dos dígitos del año
+  return `${day}/${month}/${year}`;
+}
+
+formatDate(date: Date): string {
+  const day = ('0' + date.getDate()).slice(-2); // Añadir 0 si el día es menor a 10
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // Añadir 0 si el mes es menor a 10
+  const year = date.getFullYear().toString().slice(-2); // Obtener los últimos dos dígitos del año
+  return `${day}/${month}/${year}`;
+}
 
 
+
+
+/*
 logout(): void {
   const currentUser = this.authService.getCurrentUser();
   const userName = currentUser ? currentUser.userName : 'este usuario';
@@ -390,6 +589,6 @@ logout(): void {
       console.log('El usuario canceló el cierre de sesión.');
     }
   });
-}
+}*/
 
 }

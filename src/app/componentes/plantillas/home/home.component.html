@@ -1,11 +1,14 @@
-<div class="card">
+<app-header/>
+
+
+<div class="card m-3">
   <p-toast />
   <p-toolbar styleClass="mb-4 gap-2">
       <ng-template pTemplate="left">
-        <div class="flex justify-content-center align-items-center gap-2">
+        <!--div-- class="flex justify-content-center align-items-center gap-2">
           <i class="pi pi-user"></i>
           <p class="mr-2">{{currentUser.name}}</p>
-        </div>
+        </!--div-->
 
           <p-button
               severity="success"
@@ -28,7 +31,7 @@
               [maxFileSize]="1000000"
               label="Import"
               chooseLabel="Import"
-              class="mr-2 inline-block" /-->
+              class="mr-2 inline-block" />
           <p-button
               severity="help"
               label="Export"
@@ -40,7 +43,8 @@
               label="LogOut"
               icon="pi pi-sign-out"
               (onClick)="logout()"
-              />
+              /-->
+
 
       </ng-template>
   </p-toolbar>
@@ -50,18 +54,19 @@
       [value]="empleados"
       [rows]="10"
       [paginator]="true"
-      [globalFilterFields]="['nombre', 'apellidos', 'edad', 'sexo']"
       [tableStyle]="{ 'min-width': '75rem' }"
       [(selection)]="selectedEmpleados"
       [rowHover]="true"
       dataKey="id"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [showCurrentPageReport]="true"
-      [globalFilterFields]="['nombre', 'apellidos', 'edad', 'sexo', 'salario', 'CI', 'plaza' ]"
+      [globalFilterFields]="['nombre','fechaI','fechaA','NoExpediente','militancia','nivelEsc', 'edad', 'sexo', 'CI', 'aExperiencia',
+        'procedencia', 'estadoA','tratamientoA', 'reparto', 'fechaE', 'municipio', 'provincia',
+       ]"
   >
       <ng-template pTemplate="caption">
           <div class="flex align-items-center justify-content-between">
-              <h5 class="m-0">Empleados</h5>
+              <h5 class="m-0">Candidatos</h5>
               <span class="p-input-icon-left">
                   <i class="pi pi-search"></i>
                   <input
@@ -78,35 +83,83 @@
               <th style="width: 4rem">
                   <p-tableHeaderCheckbox />
               </th>
-              <th pSortableColumn="nombre" >
-                  Nombre <p-sortIcon field="nombre" />
-              </th>
-
-              <th pSortableColumn="apellidos">
-                Apellidos <p-sortIcon field="apellidos" />
-              </th>
               <th pSortableColumn="CI">
                 CI <p-sortIcon field="CI" />
               </th>
-              <th pSortableColumn="edad">
+              <th pSortableColumn="nombre" style="min-width:15rem" >
+                  Nombre <p-sortIcon field="nombre" />
+              </th>
+
+              <th pSortableColumn="fechaI" style="min-width:10rem">
+                Fecha Inicio proceso <p-sortIcon field="fechaI" />
+              </th>
+              <th pSortableColumn="fechaA" style="min-width:10rem">
+                Fecha Actualizacion <p-sortIcon field="fechaA" />
+              </th>
+
+              <th pSortableColumn="NoExpediente" style="min-width:8rem">
+                Numero de Expediente <p-sortIcon field="NoExpediente" />
+              </th>
+              <th pSortableColumn="edad" style="min-width:5rem">
                 Edad <p-sortIcon field="edad" />
               </th>
-              <th pSortableColumn="sexo" style="min-width:10rem">
-                Sexo
+              <th pSortableColumn="sexo" style="min-width:5rem">
+                Sexo <p-sortIcon field="sexo" />
               </th>
-              <th pSortableColumn="plaza" style="min-width:10rem">
-                Plaza <p-sortIcon field="plaza" />
+
+              <th pSortableColumn="militancia" style="min-width:5rem">
+                Militancia <p-sortIcon field="militancia" />
               </th>
-              <th pSortableColumn="salario" style="min-width:10rem">
-                Salario <p-sortIcon field="salario" />
+
+              <th pSortableColumn="nivelEsc" style="min-width:10rem">
+                Nivel Escolar <p-sortIcon field="nivelEsc" />
               </th>
+              <th pSortableColumn="aExperiencia" style="min-width:10rem">
+                Años de Experiencia <p-sortIcon field="aExperiencia" />
+              </th>
+
+              <th pSortableColumn="procedencia" style="min-width:10rem">
+                Procedencia<p-sortIcon field="procedencia" />
+              </th>
+
+              <th pSortableColumn="estadoA" style="min-width:10rem">
+                Estado Actual<p-sortIcon field="estadoA" />
+              </th>
+
+              <th pSortableColumn="tratamientoA" style="min-width:10rem">
+                Tratamiento Actual<p-sortIcon field="tratamientoA" />
+              </th>
+
+              <th pSortableColumn="direccion" style="min-width:15rem">
+                Dirección<p-sortIcon field="direccion" />
+              </th>
+
+              <th pSortableColumn="reparto" style="min-width:10rem">
+                Reparto<p-sortIcon field="reparto" />
+              </th>
+
+              <th pSortableColumn="municipio" style="min-width:10rem">
+                Municipio<p-sortIcon field="municipio" />
+              </th>
+
+              <th pSortableColumn="provincia" style="min-width:10rem">
+                Provincia<p-sortIcon field="provincia" />
+              </th>
+
+              <th pSortableColumn="telefono" style="min-width:10rem">
+                Telefono<p-sortIcon field="telefono" />
+              </th>
+
+              <th pSortableColumn="fechaE" style="min-width:10rem">
+                Fecha de Evaluación<p-sortIcon field="fechaE" />
+              </th>
+
+
               <th style="min-width:10rem">
-                  Accion
+                  Acción
               </th>
-              <!--th-- pSortableColumn="inventoryStatus" style="min-width:10rem">
-                  Status <p-sortIcon field="inventoryStatus" />
-              </!--th-->
-              <th></th>
+
+
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-empleado>
@@ -115,44 +168,72 @@
                   <p-tableCheckbox [value]="empleado" />
               </td>
               <td>
+                {{ empleado.CI }}
+            </td>
+              <td>
                   {{ empleado.nombre }}
               </td>
 
               <td>
-              <!--img
-                  [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + empleado.image"
-                  [alt]="empleado.apellidos"
-                  width="50"
-                  class="shadow-4" /-->
+                  {{empleado.fechaI | date: 'dd/MM/yyyy' }}
+              </td>
 
-                  {{empleado.apellidos}}
+              <td>
+                  {{ empleado.fechaA | date: 'dd/MM/yyyy' }}
               </td>
               <td>
-                {{ empleado.CI }}
-            </td>
-              <td>
-                  {{ empleado.edad }}
+                  {{ empleado.NoExpediente }}
               </td>
               <td>
-                  {{ empleado.sexo }}
-              </td>
-              <td>
-                {{ empleado.plaza.name }}
+                {{ empleado.edad }}
             </td>
+            <td>
+              {{ empleado.sexo }}
+          </td>
+
+          <td>
+            {{ empleado.militancia }}
+        </td>
+
+        <td>
+          {{ empleado.nivelEsc?.name }}
+        </td>
+
+        <td>
+          {{empleado.aExperiencia}}
+        </td>
+
+        <td>
+          {{empleado.procedencia}}
+        </td>
+
+        <td>
+          {{empleado.estadoA}}
+        </td>
+
+        <td>
+          {{empleado.tratamientoA?.name}}
+        </td>
+        <td>
+          {{empleado.direccion}}
+        </td>
+
               <td>
-                {{ empleado.salario }}
+                {{ empleado.reparto?.name }}
             </td>
-              <!--td>
-                  <p-rating
-                      [(ngModel)]="empleado.rating"
-                      [readonly]="true"
-                      [cancel]="false" />
-              </td-->
-              <!--td>
-                  <p-tag
-                      [value]="empleado.inventoryStatus"
-                       />
-              </!--td-->
+            <td>
+              {{ empleado.municipio?.name }}
+          </td>
+          <td>
+            {{ empleado.provincia?.name }}
+        </td>
+        <td>
+          {{ empleado.telefono }}
+      </td>
+      <td>
+        {{ empleado.fechaE | date: 'dd/MM/yyyy'}}
+    </td>
+
               <td>
                   <p-button
                       icon="pi pi-pencil"
@@ -179,22 +260,18 @@
 
   <p-dialog
       [(visible)]="empleadoDialog"
-      [style]="{ width: '450px' }"
-      header="Nuevo Empleado"
+      [style]="{ width: '80%' }"
+      header="Nuevo Candidato"
       [modal]="true"
       styleClass="p-fluid">
           <ng-template pTemplate="content">
-              <img
-                  [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + empleado.image"
-                  [alt]="empleado.image"
-                  class="block m-auto pb-3"
-                  *ngIf="empleado.image" />
+
               <div class="field">
-                  <label for="name">Nombre</label>
+                  <label for="nombre">Nombre y Apellidos</label>
                   <input
                       type="text"
                       pInputText
-                      id="name"
+                      id="nombre"
                       [(ngModel)]="empleado.nombre"
                       required
                       autofocus />
@@ -202,73 +279,337 @@
                       Name is required.
                   </small>
               </div>
-              <div class="field">
-                <label for="name">Apellidos</label>
-                <input
-                    type="text"
-                    pInputText
-                    id="apellidos"
-                    [(ngModel)]="empleado.apellidos"
-                    required
-                    autofocus />
-                <small class="p-error" *ngIf="submitted && !empleado.apellidos">
-                    Apellidos is required.
+
+              <div class="formgrid grid justify-content-center align-items-center">
+                <div class="field col-4">
+                  <!--label-- for="CI">Carnet Identidad</!--label-->
+                  <input
+                      type="text"
+                      pInputText
+                      id="CI"
+                      [(ngModel)]="empleado.CI"
+                      (ngModelChange)="calcularEdad()"
+                      placeholder="Carnet Identidad"
+                      required
+                      autofocus />
+                  <small class="p-error" *ngIf="submitted && !empleado.CI">
+                      Apellidos is required.
+                  </small>
+              </div>
+
+
+
+              <div class="field col-4">
+                     <p-dropdown
+                     [options]="nivelEscolares"
+                     [(ngModel)]="empleado.nivelEsc"
+                     optionLabel="name"
+                     placeholder="Nivel Escolar"
+                     required
+                      />
+                <small class="p-error" *ngIf="submitted && !empleado.nivelEsc">
+                  Nivel Escolar is required.
                 </small>
             </div>
+
+            <div class="field-radiobutton col-2">
+
+              <p-radioButton
+                  id="masculino"
+                  name="Masculino"
+                  value="M"
+                  [(ngModel)]="empleado.sexo" />
+              <label for="category1">Hombre</label>
+          </div>
+          <div class="field-radiobutton col-2">
+              <p-radioButton
+                  id="femenina"
+                  name="Femenina"
+                  value="F"
+                  [(ngModel)]="empleado.sexo" />
+              <label for="category2">Mujer</label>
+          </div>
+
+              </div>
+
+
+
+
+              <div class="card">
+
+            <p-tabView [(activeIndex)]="activeIndex">
+            <p-tabPanel header="Datos Generales">
 
             <div class="formgrid grid justify-content-center">
-              <div class="field col-6">
-                <label for="CI">Carnet Identidad</label>
-                <input
-                    type="text"
-                    pInputText
-                    id="CI"
-                    [(ngModel)]="empleado.CI"
-                    (ngModelChange)="calcularEdad()"
-                    required
-                    autofocus />
-                <small class="p-error" *ngIf="submitted && !empleado.CI">
-                    Apellidos is required.
+              <div class="field col-3">
+                <label for="fechaI">Fecha Inicial</label>
+
+
+                    <p-calendar
+                    [(ngModel)]="empleado.fechaI"
+
+                    [showIcon]="true"
+                    [showOnFocus]="false"
+                    inputId="buttondisplay"
+                    dateFormat="dd.mm.yy"
+                    appendTo="body"/>
+                <small class="p-error" *ngIf="submitted && !empleado.fechaI">
+                  fechaI is required.
                 </small>
             </div>
 
 
 
-            <div class="field col-6">
-              <label for="CI">Edad</label>
-              <p-inputNumber
+            <div class="field col-3">
+              <label for="fechaA">Fecha de Actualizacion</label>
+                   <p-calendar
+                   [(ngModel)]="empleado.fechaA"
 
-                  id="edad"
-                  [(ngModel)]="empleado.edad"
-                  [readonly]="true"
-                  required
-                   />
-              <small class="p-error" *ngIf="submitted && !empleado.edad">
-                  EdadS is required.
+                   [showIcon]="true"
+                   [showOnFocus]="false"
+                   inputId="buttondisplay"
+                   dateFormat="dd.mm.yy"
+                   appendTo="body"/>
+              <small class="p-error" *ngIf="submitted && !empleado.fechaA">
+                Fecha de actualizacion  is required.
               </small>
           </div>
 
+          <div class="field col-2">
+            <label for="NoExpediente">No Expediente</label>
+            <input
+              type="text"
+              pInputText
+              id="NoExpediente"
+              [(ngModel)]="empleado.NoExpediente"
+                required
+                autofocus
+                 />
+            <small class="p-error" *ngIf="submitted && !empleado.NoExpediente">
+              Numero de Expediente is required.
+            </small>
+        </div>
+
+        <div class="field col-2">
+          <label for="aExperiencia">A experiencia</label>
+          <input
+            type="text"
+            pInputText
+            id="aExperiencia"
+            [(ngModel)]="empleado.aExperiencia"
+              required
+              autofocus
+               />
+          <small class="p-error" *ngIf="submitted && !empleado.aExperiencia">
+            Años de experiencia is required.
+          </small>
+      </div>
+
+      <div class="field col-2">
+        <label for="CI">Edad</label>
+        <p-inputNumber
+
+            id="edad"
+            [(ngModel)]="empleado.edad"
+            [readonly]="true"
+            required
+             />
+        <small class="p-error" *ngIf="submitted && !empleado.edad">
+            Edad is required.
+        </small>
+    </div>
+
             </div>
 
-
-
-
-              <!--div-- class="field">
-                <label for="name">Plazas</label>
+            <div class="formgrid grid justify-content-center">
+              <div class="field col-4">
+                <label for="telefono">Telefono</label>
                 <input
                     type="text"
                     pInputText
-                    id="apellidos"
-                    [(ngModel)]="empleado.plaza"
+                    id="telefono"
+                    [(ngModel)]="empleado.telefono"
                     required
                     autofocus />
-                <small class="p-error" *ngIf="submitted && !empleado.plaza">
-                    Plaza is required.
+                <small class="p-error" *ngIf="submitted && !empleado.telefono">
+                  Telefono is required.
                 </small>
-            </!--div-->
+            </div>
+
+          <div class="field col-4">
+            <label for="name">Orgamizaciones de masa</label>
+                   <p-multiSelect
+                    [options]="orgMasas"
+                    [(ngModel)]="empleado.orgMasa"
+                    optionLabel="name"
+                    placeholder="Organizaciones de Masa"
+                   />
+            <!--small-- class="p-error" *ngIf="submitted && !empleado.orgMasa">
+              orgMasa is required.
+            </!--small-->
+        </div>
+
+        <div class="field-radiobutton col-2">
+
+          <p-radioButton
+              id="militancia"
+              name="Si"
+              value="S"
+              [(ngModel)]="empleado.militancia" />
+          <label for="category1">Militante</label>
+      </div>
+      <div class="field-radiobutton col-2">
+          <p-radioButton
+              id="militancia"
+              name="No"
+              value="N"
+              [(ngModel)]="empleado.militancia" />
+          <label for="category2">No militante</label>
+      </div>
+
+
+            </div>
+
+              <div class="formgrid grid justify-content-center">
+                <div class="field col-4">
+                  <label for="direccion">Dirección</label>
+                  <input
+                      type="text"
+                      pInputText
+                      id="direccion"
+                      [(ngModel)]="empleado.direccion"
+                      required
+                      autofocus />
 
 
 
+                  <small class="p-error" *ngIf="submitted && !empleado.direccion">
+                    Direccion is required.
+                  </small>
+              </div>
+
+              <div class="field col-4">
+                <label for="reparto">Reparto</label>
+                    <p-dropdown
+                    [options]="repartos"
+                    [(ngModel)]="empleado.reparto"
+                    optionLabel="name"
+                     />
+                <small class="p-error" *ngIf="submitted && !empleado.reparto">
+                  Reparto is required.
+                </small>
+            </div>
+            <div class="field col-2">
+              <label for="municipio">Municipio</label>
+
+                  <p-dropdown
+                  [options]="municipios"
+                  [(ngModel)]="empleado.municipio"
+                  optionLabel="name"
+                   />
+              <small class="p-error" *ngIf="submitted && !empleado.municipio">
+                Municipio is required.
+              </small>
+          </div>
+          <div class="field col-2">
+            <label for="provincia">Provincia</label>
+            <p-dropdown
+            [options]="provincias"
+            [(ngModel)]="empleado.provincia"
+            optionLabel="name"
+             />
+            <small class="p-error" *ngIf="submitted && !empleado.provincia">
+              Provincia is required.
+            </small>
+            </div>
+              </div>
+
+            </p-tabPanel>
+            <p-tabPanel header="Datos para la Reserva">
+              <div class="formgrid grid justify-content-center">
+                <div class="field col-4">
+                  <label for="procedencia">Procedencia</label>
+                  <input
+                      type="text"
+                      pInputText
+                      id="procedencia"
+                      [(ngModel)]="empleado.procedencia"
+                      required
+                      autofocus />
+                  <small class="p-error" *ngIf="submitted && !empleado.procedencia">
+                    Procedencia is required.
+                  </small>
+              </div>
+
+
+
+
+            <div class="field col-4">
+              <label for="name">Tratamiento Actual</label>
+
+                <p-dropdown
+                  [options]="tratamientosA"
+                  [(ngModel)]="empleado.tratamientoA"
+                  optionLabel="name"
+                  required />
+              <small class="p-error" *ngIf="submitted && !empleado.tratamientoA">
+                tratamientoA is required.
+              </small>
+          </div>
+
+          <div class="field col-4">
+            <label for="estadoA">Estado Actual</label>
+            <input
+                type="text"
+                pInputText
+                id="estadoA"
+                [(ngModel)]="empleado.estadoA"
+                required
+                autofocus />
+            <small class="p-error" *ngIf="submitted && !empleado.estadoA">
+              Estado Actual is required.
+            </small>
+        </div>
+
+
+
+              </div>
+
+              <div class="field">
+                <label for="fechaE">Fecha de Evaluacion</label>
+                    <p-calendar
+                    [(ngModel)]="empleado.fechaE"
+
+                    [showIcon]="true"
+                    [showOnFocus]="false"
+                    inputId="buttondisplay"
+                    dateFormat="dd.mm.yy"
+                    appendTo="body"/>
+                <small class="p-error" *ngIf="submitted && !empleado.fechaE">
+                  Fecha de Evaluacion is required.
+                </small>
+            </div>
+
+            </p-tabPanel>
+            <p-tabPanel header="Historia estudiantil">
+                <p>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
+                    qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                </p>
+            </p-tabPanel>
+            <p-tabPanel header="Historia Laboral">
+              <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+              </p>
+          </p-tabPanel>
+          <p-tabPanel header="Datos Familiares">
+              <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
+                  qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+              </p>
+          </p-tabPanel>
+          <p-tabPanel header="Aspiraciones Laborales">
             <div class="field">
               <label for="name">Plazas</label>
 
@@ -285,66 +626,12 @@
                   Plaza is required.
               </small>
           </div>
+        </p-tabPanel>
+
+            </p-tabView>
+            </div>
 
 
-
-              <!--div-- class="field">
-                  <label class="mb-3">Sexo</label>
-                  <div class="formgrid grid">
-                      <div class="field-radiobutton col-6">
-                          <p-radioButton
-                              id="masculino"
-                              name="Masculino"
-                              value="M"
-                              [(ngModel)]="empleado.sexo" />
-                          <label for="category1">Hombre</label>
-                      </div>
-                      <div class="field-radiobutton col-6">
-                          <p-radioButton
-                              id="femenina"
-                              name="Femenina"
-                              value="F"
-                              [(ngModel)]="empleado.sexo" />
-                          <label for="category2">Mujer</label>
-                      </div>
-
-                  </div>
-              </!--div-->
-
-              <div class="formgrid grid justify-content-center">
-                  <div class="field col-4">
-                      <label for="price"></label>
-                      <p-inputNumber
-                          id="salario"
-                          [(ngModel)]="empleado.salario"
-                          placeholder="Salario"
-                          mode="currency"
-                          currency="USD"
-                          locale="en-US"
-                          required />
-                          <small class="p-error" *ngIf="submitted && !empleado.salario">
-                            Salario is required.
-                        </small>
-                  </div>
-
-                  <div class="field-radiobutton col-4">
-
-                    <p-radioButton
-                        id="masculino"
-                        name="Masculino"
-                        value="M"
-                        [(ngModel)]="empleado.sexo" />
-                    <label for="category1">Hombre</label>
-                </div>
-                <div class="field-radiobutton col-4">
-                    <p-radioButton
-                        id="femenina"
-                        name="Femenina"
-                        value="F"
-                        [(ngModel)]="empleado.sexo" />
-                    <label for="category2">Mujer</label>
-                </div>
-              </div>
           </ng-template>
 
           <ng-template pTemplate="footer">

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
@@ -19,7 +19,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './login.component.scss',
   providers: [MessageService]
 })
-export class LoginComponent {
+export  class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(

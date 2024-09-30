@@ -12,5 +12,9 @@ export const routes: Routes = [
   {path:'registro', component:RegistroComponent, canActivate: [authRedirectGuard] },
   {path: 'home', component: HomeComponent, canActivate:[authGuardGuard] },
   {path: 'nuevo', component: NuevoComponent, canActivate:[authGuardGuard]},
-  { path: '**', redirectTo: 'login' }
+  {path: '**', redirectTo: 'login' }
+
+
+
+
 ];
