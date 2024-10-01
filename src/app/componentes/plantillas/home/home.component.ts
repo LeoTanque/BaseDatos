@@ -147,24 +147,30 @@ this.repartos = [
   { name: 'Caribe', code: 'C' },
   { name: 'Joselillo', code: 'J' },
   { name: 'Haiti Chuiquito', code: 'H' },
-  { name: 'Las coloradas', code: 'LC' },
-  { name: 'Los Mangos', code: 'LM' }
+  { name: 'Las Coloradas', code: 'LC' },
+  { name: 'Los Mangos', code: 'LM' },
+  { name: 'La Playa', code: 'LP' },
+  { name: 'Los Mangos', code: 'LM' },
+  { name: 'Miraflores', code: 'MF' },
+  { name: 'Rolo', code: 'RL' }
 ];
 
 this.municipios = [
   { name: 'Moa', code: 'NY' },
   { name: 'Sagua', code: 'RM' },
   { name: 'Cueto', code: 'LDN' },
-  { name: 'Istanbul', code: 'IST' },
-  { name: 'Paris', code: 'PRS' }
+  { name: 'Frank Pais', code: 'FP' },
+  { name: 'Holguin', code: 'HL' },
+  { name: 'Calixto García', code: 'CG' },
+  { name: 'Mayari', code: 'MY' }
 ];
 
 this.provincias = [
-  { name: 'New York', code: 'NY' },
-  { name: 'Rome', code: 'RM' },
-  { name: 'London', code: 'LDN' },
-  { name: 'Istanbul', code: 'IST' },
-  { name: 'Paris', code: 'PRS' }
+  { name: 'Holguin', code: 'HOL' },
+  { name: 'Santiago de Cuba ', code: 'SC' },
+  { name: 'Granma', code: 'GM' },
+  { name: 'Guantanamo', code: 'GT' },
+  { name: 'Las Tunas', code: 'LT' }
 ];
 
 this.tratamientosA = [

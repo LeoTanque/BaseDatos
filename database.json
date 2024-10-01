@@ -61,73 +61,26 @@
         "code": "NY"
       },
       "provincia": {
-        "name": "New York",
-        "code": "NY"
+        "name": "Holguin",
+        "code": "HOL"
       },
       "tratamientoA": {
         "name": "Desmovilizado FAR",
         "code": "DF"
       },
-      "nombre": "Jose Romero Cala",
-      "CI": "95010523659",
-      "edad": 29,
+      "nombre": "Jose Romero Cala hvv",
+      "CI": "0002244569",
+      "edad": 24,
       "nivelEsc": {
-        "name": "Preuniversitario",
-        "code": "Pre"
+        "name": "TS",
+        "code": "TS"
       },
       "sexo": "M",
-      "fechaI": "2024-09-08T04:00:00.000Z",
-      "fechaA": "2024-09-23T04:00:00.000Z",
-      "NoExpediente": "25987",
-      "aExperiencia": "1 years",
-      "telefono": "59875632",
-      "orgMasa": [
-        {
-          "name": "CTC",
-          "code": "CTC"
-        },
-        {
-          "name": "CDR",
-          "code": "CDR"
-        }
-      ],
-      "militancia": "N",
-      "direccion": "Calle Principal #5",
-      "procedencia": "OPJM",
-      "estadoA": "loco",
-      "fechaE": "2024-09-30T04:00:00.000Z",
-      "id": 1
-    },
-    {
-      "reparto": {
-        "name": "Joselillo",
-        "code": "J"
-      },
-      "municipio": {
-        "name": "Sagua",
-        "code": "RM"
-      },
-      "provincia": {
-        "name": "London",
-        "code": "LDN"
-      },
-      "tratamientoA": {
-        "name": "Reserva del Niquel",
-        "code": "RN"
-      },
-      "nombre": "Rafael Martinedz Rodriguez",
-      "CI": "68011026987",
-      "edad": 56,
-      "nivelEsc": {
-        "name": "TM",
-        "code": "TM"
-      },
-      "sexo": "M",
-      "fechaI": "2024-09-02T04:00:00.000Z",
-      "fechaA": "2024-09-18T04:00:00.000Z",
-      "NoExpediente": "25987",
-      "aExperiencia": "1 years",
-      "telefono": "59874569",
+      "fechaI": "2024-08-04T04:00:00.000Z",
+      "fechaA": "2024-09-09T04:00:00.000Z",
+      "NoExpediente": "75984",
+      "aExperiencia": "5 años",
+      "telefono": "56978459",
       "orgMasa": [
         {
           "name": "CTC",
@@ -143,10 +96,57 @@
         }
       ],
       "militancia": "S",
-      "direccion": "Calle Principal #10",
-      "procedencia": "gsgdsg",
-      "estadoA": "soltero",
-      "fechaE": "2024-09-27T04:00:00.000Z",
+      "direccion": "Calle 9na #67F",
+      "procedencia": "exconvicto",
+      "estadoA": "siquiatrico",
+      "fechaE": "2024-09-09T04:00:00.000Z",
+      "id": 1
+    },
+    {
+      "reparto": {
+        "name": "Caribe",
+        "code": "C"
+      },
+      "municipio": {
+        "name": "Moa",
+        "code": "NY"
+      },
+      "provincia": {
+        "name": "Holguin",
+        "code": "HOL"
+      },
+      "tratamientoA": {
+        "name": "Desmovilizado FAR",
+        "code": "DF"
+      },
+      "nombre": "Iven Morales Ojeda",
+      "CI": "60012578965",
+      "edad": 64,
+      "nivelEsc": {
+        "name": "NIvel Superior",
+        "code": "NS"
+      },
+      "sexo": "M",
+      "fechaI": "2024-09-08T04:00:00.000Z",
+      "fechaA": "2024-09-29T04:00:00.000Z",
+      "NoExpediente": "25987",
+      "aExperiencia": "10 años",
+      "telefono": "59874569",
+      "orgMasa": [
+        {
+          "name": "CTC",
+          "code": "CTC"
+        },
+        {
+          "name": "PCC",
+          "code": "PCC"
+        }
+      ],
+      "militancia": "S",
+      "direccion": "Calle 9na #67F",
+      "procedencia": "exconvicto",
+      "estadoA": "asesino",
+      "fechaE": "2024-09-30T04:00:00.000Z",
       "id": 2
     }
   ],
