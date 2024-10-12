@@ -26,10 +26,6 @@ export class EmpleadosService {
       return this.http.delete<any>(`${this.apiUrl}/database/${id}`);
     }
 
-    // Actualizar un empleado por ID
-    updateEmpleado1(id: number | string, empleado: any): Observable<any> {
-      return this.http.put<any>(`${this.apiUrl}/database/${id}`, empleado);
-    }
 
     updateEmpleado(id: number | string, empleado: any): Observable<any> {
       return this.http.put<any>(`${this.apiUrl}/database/${id}`, empleado).pipe(

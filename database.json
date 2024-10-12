@@ -53,83 +53,32 @@
   "database": [
     {
       "reparto": {
-        "name": "Caribe",
-        "code": "C"
+        "name": "Las Coloradas",
+        "code": "LC"
       },
       "municipio": {
-        "name": "Moa",
-        "code": "NY"
+        "name": "Cueto",
+        "code": "LDN"
       },
       "provincia": {
-        "name": "Holguin",
-        "code": "HOL"
+        "name": "Granma",
+        "code": "GM"
       },
       "tratamientoA": {
         "name": "Desmovilizado FAR",
         "code": "DF"
       },
-      "nombre": "Jose Romero Cala hvv",
-      "CI": "0002244569",
-      "edad": 24,
+      "nombre": "Jose Romero Cala",
+      "CI": "05011236987",
+      "edad": 19,
       "nivelEsc": {
-        "name": "TS",
-        "code": "TS"
+        "name": "Preuniversitario",
+        "code": "Pre"
       },
       "sexo": "M",
-      "fechaI": "2024-08-04T04:00:00.000Z",
-      "fechaA": "2024-09-09T04:00:00.000Z",
+      "fechaI": "2024-10-07T04:00:00.000Z",
+      "fechaA": "2024-10-22T04:00:00.000Z",
       "NoExpediente": "75984",
-      "aExperiencia": "5 años",
-      "telefono": "56978459",
-      "orgMasa": [
-        {
-          "name": "CTC",
-          "code": "CTC"
-        },
-        {
-          "name": "PCC",
-          "code": "PCC"
-        },
-        {
-          "name": "CDR",
-          "code": "CDR"
-        }
-      ],
-      "militancia": "S",
-      "direccion": "Calle 9na #67F",
-      "procedencia": "exconvicto",
-      "estadoA": "siquiatrico",
-      "fechaE": "2024-09-09T04:00:00.000Z",
-      "id": 1
-    },
-    {
-      "reparto": {
-        "name": "Caribe",
-        "code": "C"
-      },
-      "municipio": {
-        "name": "Moa",
-        "code": "NY"
-      },
-      "provincia": {
-        "name": "Holguin",
-        "code": "HOL"
-      },
-      "tratamientoA": {
-        "name": "Desmovilizado FAR",
-        "code": "DF"
-      },
-      "nombre": "Iven Morales Ojeda",
-      "CI": "60012578965",
-      "edad": 64,
-      "nivelEsc": {
-        "name": "NIvel Superior",
-        "code": "NS"
-      },
-      "sexo": "M",
-      "fechaI": "2024-09-08T04:00:00.000Z",
-      "fechaA": "2024-09-29T04:00:00.000Z",
-      "NoExpediente": "25987",
       "aExperiencia": "10 años",
       "telefono": "59874569",
       "orgMasa": [
@@ -138,16 +87,125 @@
           "code": "CTC"
         },
         {
+          "name": "CDR",
+          "code": "CDR"
+        }
+      ],
+      "militancia": "N",
+      "direccion": "Calle Principal",
+      "procedencia": "exconvicto",
+      "estadoA": "loco",
+      "fechaE": "2024-10-25T04:00:00.000Z",
+      "id": 1,
+      "plaza": {
+        "name": "Secretaria",
+        "code": "ST",
+        "salario": 5800
+      }
+    },
+    {
+      "reparto": {
+        "name": "Haiti Chuiquito",
+        "code": "H"
+      },
+      "municipio": {
+        "name": "Cueto",
+        "code": "LDN"
+      },
+      "provincia": {
+        "name": "Granma",
+        "code": "GM"
+      },
+      "tratamientoA": {
+        "name": "Desmovilizado FAR",
+        "code": "DF"
+      },
+      "nombre": "Jose Luis Perz Rodriguez",
+      "CI": "05011236987",
+      "edad": 19,
+      "nivelEsc": {
+        "name": "Preuniversitario",
+        "code": "Pre"
+      },
+      "sexo": "M",
+      "fechaI": "2024-10-10T04:00:00.000Z",
+      "fechaA": "2024-10-22T04:00:00.000Z",
+      "NoExpediente": "24879",
+      "aExperiencia": "3 years",
+      "telefono": "56978459",
+      "orgMasa": [
+        {
+          "name": "CTC",
+          "code": "CTC"
+        },
+        {
+          "name": "CDR",
+          "code": "CDR"
+        }
+      ],
+      "militancia": "N",
+      "direccion": "Calle Principal #10",
+      "procedencia": "desvinculado",
+      "estadoA": "soltero",
+      "fechaE": "2024-10-30T04:00:00.000Z",
+      "id": 2,
+      "plaza": {
+        "name": "Tecnico en Ciencias Informaticas",
+        "code": "TI",
+        "salario": 5800
+      }
+    },
+    {
+      "reparto": {
+        "name": "Las Coloradas",
+        "code": "LC"
+      },
+      "municipio": {
+        "name": "Sagua",
+        "code": "RM"
+      },
+      "provincia": {
+        "name": "Guantanamo",
+        "code": "GT"
+      },
+      "tratamientoA": {
+        "name": "Desmovilizado FAR",
+        "code": "DF"
+      },
+      "nombre": "Iven Morales Ojeda",
+      "CI": "68011026987",
+      "edad": 56,
+      "nivelEsc": {
+        "name": "NIvel Superior",
+        "code": "NS"
+      },
+      "sexo": "M",
+      "fechaI": "2024-10-13T04:00:00.000Z",
+      "fechaA": "2024-10-21T04:00:00.000Z",
+      "NoExpediente": "75984",
+      "aExperiencia": "5 años",
+      "telefono": "59874569",
+      "orgMasa": [
+        {
           "name": "PCC",
           "code": "PCC"
+        },
+        {
+          "name": "CTC",
+          "code": "CTC"
         }
       ],
       "militancia": "S",
       "direccion": "Calle 9na #67F",
-      "procedencia": "exconvicto",
-      "estadoA": "asesino",
-      "fechaE": "2024-09-30T04:00:00.000Z",
-      "id": 2
+      "procedencia": "desvinculado",
+      "estadoA": "soltero",
+      "fechaE": "2024-10-31T04:00:00.000Z",
+      "id": 3,
+      "plaza": {
+        "name": "Director UEB Mantenimiento",
+        "code": "DMT",
+        "salario": 5800
+      }
     }
   ],
   "plazas": [

@@ -281,6 +281,7 @@ deleteSelectedEmpleados() {
 editEmpleado(empleado: any) {
   this.empleado = { ...empleado };
   this.empleadoDialog = true;
+  console.log(empleado)
 }
 
 
@@ -343,56 +344,7 @@ calcularEdad(): void {
 }
 
 
-saveEmpleado1() {
-  this.submitted = true;
-  if (this.empleado.id && this.edadOriginal !== null) {
-    // Si la edad cambió y el CI no fue modificado, mostrar mensaje de advertencia
-    if (this.empleado.edad !== this.edadOriginal && !this.empleado.CI?.trim()) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'Advertencia',
-        detail: 'La edad depende del CI. Para cambiar la edad, debe ingresar un CI válido.',
-        life: 3000
-      });
-      return; // Detener el guardado hasta que el CI sea modificado
-    }
-  }
 
-  if (this.empleado.nombre?.trim()) {
-    if (this.empleado.id) {
-      this.empleadosService.updateEmpleado(this.empleado.id, this.empleado).subscribe({
-        next: (data) => {
-          const index = this.findIndexById(this.empleado.id);
-          this.empleados[index] = data;
-          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Empleado editado', life: 3000 });
-
-          this.empleadoDialog = false;
-          this.empleado = {};
-        },
-        error: (err) => {
-          console.error('Error al editar empleado', err);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo editar el empleado', life: 3000 });
-        }
-      });
-    } else {
-      //this.empleado.id = this.createId();
-      this.empleadosService.addEmpleado(this.empleado).subscribe({
-        next: (data) => {
-
-          this.empleados.push(data);
-          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Empleado creado', life: 3000 });
-
-          this.empleadoDialog = false;
-          this.empleado = {};
-        },
-        error: (err) => {
-          console.error('Error al agregar empleado', err);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el empleado', life: 3000 });
-        }
-      });
-    }
-  }
-}
 
 
 saveEmpleado() {
@@ -446,7 +398,7 @@ saveEmpleado() {
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Empleado creado', life: 3000 });
 
           this.empleadoDialog = false;
-          this.empleado = {};
+          this.empleado = {data};
 
          console.log('Empleado', this.empleado);
         },

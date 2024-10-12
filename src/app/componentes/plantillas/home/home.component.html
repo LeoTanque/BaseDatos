@@ -61,7 +61,7 @@
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [showCurrentPageReport]="true"
       [globalFilterFields]="['nombre','fechaI','fechaA','NoExpediente','militancia','nivelEsc', 'edad', 'sexo', 'CI', 'aExperiencia',
-        'procedencia', 'estadoA','tratamientoA', 'reparto', 'fechaE', 'municipio', 'provincia',
+        'procedencia', 'estadoA','tratamientoA', 'reparto', 'fechaE', 'municipio', 'provincia', 'direccion', 'plaza'
        ]"
   >
       <ng-template pTemplate="caption">
@@ -153,6 +153,9 @@
               <th pSortableColumn="fechaE" style="min-width:10rem">
                 Fecha de Evaluación<p-sortIcon field="fechaE" />
               </th>
+              <!--th-- pSortableColumn="plaza" style="min-width:10rem">
+                Plaza<p-sortIcon field="plaza" />
+              </!--th-->
 
 
               <th style="min-width:10rem">
@@ -233,6 +236,9 @@
       <td>
         {{ empleado.fechaE | date: 'dd/MM/yyyy'}}
     </td>
+    <!--td>
+      {{empleado.plaza.name}}
+    </td-->
 
               <td>
                   <p-button
@@ -551,7 +557,7 @@
                   [options]="tratamientosA"
                   [(ngModel)]="empleado.tratamientoA"
                   optionLabel="name"
-                  required />
+                   />
               <small class="p-error" *ngIf="submitted && !empleado.tratamientoA">
                 tratamientoA is required.
               </small>
